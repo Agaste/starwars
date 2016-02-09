@@ -34,3 +34,46 @@ var quotes = [{
   'author': '- Darth Vader',
   'quote': 'The Force is strong with this one.'
 }];
+
+
+function getRandomQuote() {
+    var randomIndex = Math.floor(Math.random()*quotes.length);
+    var quotation = quotes[randomIndex];
+
+    console.log('Author : '+quotation.author);
+    console.log('Citation : '+quotation.quote);
+
+}
+
+
+function getAuthor(sentence) {
+    for(var i=0;i<quotes.length;i++) {
+      var reg = quotes[i].quote.search(sentence);
+      if(reg!=-1)
+        console.log('The author : '+quotes[i].author+' made the quote : '+quotes[i].quote)
+    }
+
+}
+
+function getRandomQuote(authors) {
+
+
+    var quotes_author = [];
+    var auteur = '';
+
+    for(var i=0; i<quotes.length; i++) {
+      var reg = quotes[i].author.search(authors);
+      if(reg != -1) {
+        quotes_author.push(quotes[i].quote);
+        auteur = quotes[i].author;
+      }
+    }
+
+    var randomIndex = Math.floor(Math.random()*quotes_author.length);
+    var quotation = quotes_author[randomIndex];
+    console.log(auteur+' said : '+quotation);
+}
+
+//getRandomQuote();
+//getAuthor('In my experience');
+getRandomQuote('Yoda');
