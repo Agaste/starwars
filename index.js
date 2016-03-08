@@ -35,27 +35,47 @@ var quotes = [{
   'quote': 'The Force is strong with this one.'
 }];
 
+/*var quote_content;
+var author_content;*/
 
 function getRandomQuote() {
+
     var randomIndex = Math.floor(Math.random()*quotes.length);
     var quotation = quotes[randomIndex];
 
-    console.log('Author : '+quotation.author);
-    console.log('Citation : '+quotation.quote);
+    ReactDOM.render(
+      React.createElement('h3',null,quotation.quote),
+      document.getElementById('quote-content')
+      );
 
+    ReactDOM.render(
+      React.createElement('h1',null,quotation.author),
+      document.getElementById('author-content')
+      );
+
+    ReactDOM.render(
+      React.createElement('h2',null, quotation.quote),
+      document.getElementById('quote-content')
+     );    
+
+/*    console.log('Author : '+quotation.author);
+    console.log('Citation : '+quotation.quote);*/
 }
 
 
 function getAuthor(sentence) {
     for(var i=0;i<quotes.length;i++) {
       var reg = quotes[i].quote.search(sentence);
-      if(reg!=-1)
-        console.log('The author : '+quotes[i].author+' made the quote : '+quotes[i].quote)
+      if(reg!=-1) {
+        console.log('The author : '+quotes[i].author+' made the quote : '+quotes[i].quote);
+        //quote_content = "\""+quotes[i].quote+"\"";
+        //author_content = quotes[i].author;
     }
-
+    }
 }
 
-function getRandomQuote(authors) {
+
+function getRandomQuoteAuthor(authors) {
 
 
     var quotes_author = [];
@@ -65,15 +85,22 @@ function getRandomQuote(authors) {
       var reg = quotes[i].author.search(authors);
       if(reg != -1) {
         quotes_author.push(quotes[i].quote);
-        auteur = quotes[i].author;
       }
     }
 
     var randomIndex = Math.floor(Math.random()*quotes_author.length);
     var quotation = quotes_author[randomIndex];
+
+    ReactDOM.render(
+      React.createElement('h2',null, quotation),
+      document.getElementById('darth-vader-content')
+     );  
+
     console.log(auteur+' said : '+quotation);
 }
 
-//getRandomQuote();
-//getAuthor('In my experience');
-getRandomQuote('Yoda');
+getRandomQuote();
+getRandomQuoteAuthor('Darth');
+
+
+//getRandomQuote('Yoda');
